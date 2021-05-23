@@ -25,7 +25,7 @@ function Planet() {
     "textures/clouds-trans.png",
   ]);
   return (
-    <mesh ref={planet}>
+    <mesh ref={planet} rotation={[0, 0, Math.PI / 5292]}>
       <sphereBufferGeometry args={[2, 32, 32]} />
       <meshPhongMaterial
         map={planetMap}
