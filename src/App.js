@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Canvas } from "@react-three/fiber";
+// import { OrbitControls } from "@react-three/drei";
+import { useTexture } from "@react-three/drei";
+import "./App.css";
+import Planet from "./Planet";
 
 function App() {
+  const [stars] = useTexture(["/textures/starField_alpha.png"]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Canvas>
+        <mesh>
+          <planeGeometry args={[15, 6.5]} position={[0, 0, -5]} />
+          <meshBasicMaterial map={stars} />
+        </mesh>
+        <directionalLight position={[50, 0, 50]} color={"#ffffdd"} />
+        <Planet />
+      </Canvas>
     </div>
   );
 }
