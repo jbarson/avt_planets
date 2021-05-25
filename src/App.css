@@ -10,3 +10,10 @@
 canvas {
   background-color: black;
 }
+
+.rotation-speed {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  z-index: 20;
+}

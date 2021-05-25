@@ -8,7 +8,7 @@ function Planet() {
   const planet = React.useRef();
   const clouds = React.useRef()
   useFrame(({ clock }) => {
-    planet.current.rotation.y = clock.getElapsedTime() / 20
+    planet.current.rotation.y = clock.getElapsedTime() /20
     clouds.current.rotation.y= clock.getElapsedTime() / 200
   })
 
@@ -25,7 +25,8 @@ function Planet() {
     "textures/clouds-trans.png",
   ]);
   return (
-    <mesh ref={planet} rotation={[0, 0, Math.PI / 5292]}>
+    <mesh rotation={[0, 0, Math.PI / 6.12]}>
+    <mesh ref={planet} >
       <sphereBufferGeometry args={[2, 32, 32]} />
       <meshPhongMaterial
         map={planetMap}
@@ -42,7 +43,8 @@ function Planet() {
             opacity="0.8"
           />
       </mesh>
-    </mesh>
+      </mesh>
+      </mesh>
   )
 }
 
