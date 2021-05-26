@@ -4,15 +4,24 @@ import { useFrame } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 
 
-function Planet() {
+function Planet({ rotation }) {
   const planet = React.useRef();
   const clouds = React.useRef()
+  const ALTIPLANODAY = 98291 //seconds in a day
+  const timeCompression = {
+    slow: 60,
+    medium: 600,
+    fast: 3600,
+  }
   useFrame(({ clock }) => {
-    planet.current.rotation.y = clock.getElapsedTime() /20
-    clouds.current.rotation.y= clock.getElapsedTime() / 200
+    planet.current.rotation.y = (clock.getElapsedTime() * 2 * Math.PI / ALTIPLANODAY * timeCompression[rotation]) % 2*Math.PI
+    // planet.current.rotation.y += clock.getDelta() * 2 * Math.PI / ALTIPLANODAY * timeCompression[rotation]
+    // setcurrentRotation((clock.getElapsedTime() * 2 * Math.PI  * timeCompression[rotation])/ ALTIPLANODAY)
+    // planet.current.rotation.y = currentRotation
+    // clouds.current.rotation.y= clock.getElapsedTime() / 200
   })
 
-
+  
   const [
     planetMap, 
     specularMap, 
