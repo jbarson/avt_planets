@@ -2,11 +2,6 @@ import React from 'react'
 import { useFrame } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 
-/**
- * 
- * @param {props} param0 
- * @returns 
- */
 function Planet({ rotation }) {
   const planet = React.useRef();
   const clouds = React.useRef()
