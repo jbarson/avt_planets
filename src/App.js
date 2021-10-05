@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import "./App.css";
-import Planet from "./Planet";
-import Stars from "./Stars";
+import Planet from "./components/Planet";
+import Stars from "./components/Stars";
+import Controls from "./components/Controls";
 
 function App() {
   const [rotationVel, setRotationVel] = useState("slow");
@@ -11,43 +12,11 @@ function App() {
       <div className="app">
         <Canvas>
           <Stars />
-          <directionalLight position={[50, 0, 50]} color={"#ffffdd"} />
+          <directionalLight position={[50, 0, 50]} color={"#ffffdd"} intensity="0.7"/>
           <Planet rotation={rotationVel} />
         </Canvas>
       </div>
-      <div className="rotation-speed">
-        {/* 1/60th, 1/600, and 1/3600 (so 1 minute per hour, 1 second per 10
-        minutes, and 1 second per hour) */}
-        <ul>
-          <li>
-            <input
-              type="radio"
-              name="speed"
-              defaultChecked={rotationVel === "slow"}
-              onChange={() => setRotationVel("slow")}
-            />
-            <label htmlFor="slow">1:60</label>
-          </li>
-          <li>
-            <input
-              type="radio"
-              name="speed"
-              defaultChecked={rotationVel === "medium"}
-              onClick={() => setRotationVel("medium")}
-            />
-            <label htmlFor="medium">1:600</label>
-          </li>
-          <li>
-            <input
-              type="radio"
-              name="speed"
-              defaultChecked={rotationVel === "fast"}
-              onChange={() => setRotationVel("fast")}
-            />
-            <label htmlFor="fast">1:3600</label>
-          </li>
-        </ul>
-      </div>
+      <Controls setRotationVel={setRotationVel} rotationVel={rotationVel} />
     </div>
   );
 }

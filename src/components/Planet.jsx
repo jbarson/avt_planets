@@ -1,9 +1,12 @@
 import React from 'react'
 import { useFrame } from "@react-three/fiber";
-
 import { useTexture } from "@react-three/drei";
 
-
+/**
+ * 
+ * @param {props} param0 
+ * @returns 
+ */
 function Planet({ rotation }) {
   const planet = React.useRef();
   const clouds = React.useRef()
@@ -15,10 +18,6 @@ function Planet({ rotation }) {
   }
   useFrame(({ clock }) => {
     planet.current.rotation.y = (clock.getElapsedTime() * 2 * Math.PI / ALTIPLANODAY * timeCompression[rotation]) % 2*Math.PI
-    // planet.current.rotation.y += clock.getDelta() * 2 * Math.PI / ALTIPLANODAY * timeCompression[rotation]
-    // setcurrentRotation((clock.getElapsedTime() * 2 * Math.PI  * timeCompression[rotation])/ ALTIPLANODAY)
-    // planet.current.rotation.y = currentRotation
-    // clouds.current.rotation.y= clock.getElapsedTime() / 200
   })
 
   
@@ -49,11 +48,11 @@ function Planet({ rotation }) {
             map={cloudMap}
             transparent
             depthWrite
-            opacity="0.8"
+            opacity="0.7"
           />
-      </mesh>
-      </mesh>
-      </mesh>
+        </mesh>
+      </mesh> 
+    </mesh>
   )
 }
 
